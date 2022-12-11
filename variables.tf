@@ -23,3 +23,6 @@ variable "labels" {
     region      = string
   })
 }
+
+variable "ingressClassName" {}
+variable "argocd_project" {}
