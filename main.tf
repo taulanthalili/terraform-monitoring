@@ -36,6 +36,32 @@ resource "argocd_application" "monitoring" {
           name  = "grafana.ingress.hosts[0]"
           value = "grafana.${var.base_domain}"
         }
+        #Loki data source
+        parameter {
+          name  = "grafana.additionalDataSources[0].name"
+          value = "loki"
+        }
+        parameter {
+          name  = "grafana.additionalDataSources[0].type"
+          value = "loki"
+        }
+        parameter {
+          name  = "grafana.additionalDataSources[0].url"
+          value = "http://${var.namespace}-loki:3100"
+        }
+        parameter {
+          name  = "grafana.additionalDataSources[0].access"
+          value = "proxy"
+        }
+        parameter {
+          name  = "grafana.additionalDataSources[0].orgId"
+          value = "1"
+        }
+        parameter {
+          name  = "grafana.additionalDataSources[0].version"
+          value = "1"
+        }
+
       }
 
     }
